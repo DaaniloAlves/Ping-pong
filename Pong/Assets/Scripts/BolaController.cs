@@ -5,11 +5,33 @@ using UnityEngine;
 public class BolaController : MonoBehaviour
 {
     public Rigidbody2D rb2d;
-    public Vector2 velocidade;
+    private Vector2 velocidade;
+    public float aceleracao;
 
     void Start()
     {
+        int spawn = Random.Range(1, 5);
+        switch(spawn)
+        {
+            case 1:
+                velocidade.x = aceleracao; 
+                velocidade.y = aceleracao;
+                break;
+            case 2: 
+                velocidade.x = -aceleracao; 
+                velocidade.y = aceleracao;
+                break;
+            case 3:
+                velocidade.x = -aceleracao; 
+                velocidade.y = -aceleracao;
+                break;
+            case 4:
+                velocidade.x = aceleracao; 
+                velocidade.y = -aceleracao;
+                break;
+        }
         rb2d.velocity = velocidade;
+        
     }
 
     
