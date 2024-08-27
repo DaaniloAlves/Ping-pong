@@ -5,12 +5,12 @@ using UnityEngine;
 
 public class BolaController : MonoBehaviour
 {
-    public Rigidbody2D rb2d;
-    private Vector2 velocidade;
-    public float aceleracao = 4f;
+	public Rigidbody2D rb2d;
+	private Vector2 velocidade;
+	public float aceleracao = 4f;
 
-    void Start()
-    {
+	void Start()
+	{
 		int spawn = UnityEngine.Random.Range(1, 5);
 		switch (spawn)
 		{
@@ -33,11 +33,11 @@ public class BolaController : MonoBehaviour
 		}
 		rb2d.velocity = velocidade;
 
-    }
+	}
 
-    
-    void Update()
-    {
-        
-    }
+
+	void Update()
+	{
+
+	}
 }
