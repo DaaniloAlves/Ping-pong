@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class RaqueteController : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class RaqueteController : MonoBehaviour
 	private float meuY;
 	public float velocidade = 6.5f;
 	private float limiteTela = 3.3f;
+	private float limiteJogo = 13f;
 	public bool automatico;
 	public Transform bolaTransform;
 	public bool player1;
@@ -24,6 +26,7 @@ public class RaqueteController : MonoBehaviour
 	void Update()
 	{
 		MovimentarRaquete();
+		verificarMarcacaoPonto();
 	}
 
 	void MovimentarRaquete()
@@ -76,6 +79,28 @@ public class RaqueteController : MonoBehaviour
 			{
 				minhaPosicao.y = meuY;
 				transform.position = minhaPosicao;
+			}
+		}
+	}
+
+	void verificarMarcacaoPonto()
+	{
+		if (bolaTransform.position.x > limiteJogo)
+		{
+			Debug.Log("Ponto do player 1");
+			SceneManager.LoadScene("Jogo");
+		}
+		else if (bolaTransform.position.x < -limiteJogo)
+		{
+			if (!automatico)
+			{
+				Debug.Log("Ponto do player 2");
+				SceneManager.LoadScene("Jogo");
+			}
+			else
+			{
+				Debug.Log("Ponto do bot");
+				SceneManager.LoadScene("Jogo");
 			}
 		}
 	}
